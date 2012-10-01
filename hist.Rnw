@@ -1,7 +1,7 @@
 \documentclass{article}
 
 \begin{document}
-What did you expect?
+What did you expect? This is the real deal!
 
 <<>>=
 hist(rnorm(10000), col = rainbow(40))
