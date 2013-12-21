@@ -1,0 +1,12 @@
+\documentclass{article}
+\usepackage{geometry}[1in]
+
+\begin{document}
+
+<<comment = NA, warning = FALSE, message = FALSE>>=
+library(PASWR2)
+head(EPIDURALF)
+@
+
+
+\end{document}
