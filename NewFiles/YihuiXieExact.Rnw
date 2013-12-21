@@ -1,0 +1,67 @@
+\documentclass{article}
+
+\usepackage{amsthm}
+\newtheorem{rexample}{R Example}[section]
+
+\title{Using the Example Environment with knitr}
+\author{Alan's Modifications and Notes}
+\begin{document}
+\maketitle
+
+<<setup, include=FALSE>>=
+knit_hooks$set(rexample = function(before, options, envir) {
+  if (before) sprintf('\\begin{rexample}\\label{%s}\\hfill{}', options$label) else '\\end{rexample}'
+})
+@
+
+\section{Introduction}
+
+This is a test of the R Example environment.
+
+\subsection{Go!}
+
+<<test-a, rexample=TRUE>>=
+1+1
+@
+
+Look at Example \ref{test-a}!
+
+\subsection{Ha!}
+
+<<test-b, rexample=TRUE>>=
+x=rnorm(10)
+@
+
+Move on!
+
+<<test-c, rexample=TRUE>>=
+sd(x) # standard deviation
+@
+
+How about \ref{test-b} and \ref{test-c}?
+
+If you want to use this R Example environment for all code chunks, make rexample a global chunk option in the setup chunk.
+
+Now I am adding to the minimal example.
+
+<<plot1, rexample = TRUE>>=
+junk <- rnorm(10000)
+MEAN <- mean(junk)
+MEAN
+@
+
+The mean of the junk is \Sexpr{MEAN}.  Note: It seems that an error is thrown if
+a code chunk with a graph and label is executed at the same time.  Work around is
+as shown below.  That is, hide the figure when showing the code...then show the figure
+with a separate code chunk.
+
+<<Graph, rexample = TRUE, fig.show='hide'>>=
+library(ggplot2)
+ggplot(data = mtcars) + geom_density(aes(x = mpg), fill = "pink")
+@
+
+<<GraphShow, echo = FALSE, fig.align = 'center', fig.width = 3, fig.height = 3, dev = 'tikz'>>=
+<<Graph>>
+@
+
+\end{document}
