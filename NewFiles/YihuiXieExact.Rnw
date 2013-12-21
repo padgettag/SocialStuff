@@ -69,7 +69,10 @@ ggplot(data = mtcars) + geom_density(aes(x = mpg), fill = "pink")
 <<Graph>>
 @
 
-<<GIT, engine = "bash", GIT = TRUE, comment = NA>>=
+When working from the office on MAC change \texttt{engine = 'sh'} to \texttt{engine = 'bash'} 
+and output from git will follow.
+
+<<GIT, engine = "sh", GIT = TRUE, comment = NA>>=
 git status
 @
 
