@@ -6,7 +6,7 @@
 <<comment = NA, warning = FALSE, message = FALSE>>=
 library(PASWR2)
 head(EPIDURALF)
-ggplot(data = EPIDURALF) + geom_histogram(aes(x = kg))
+ggplot(data = EPIDURALF) + geom_density(aes(x = kg), fill = "pink")
 @
 
 
