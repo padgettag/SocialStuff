@@ -1,9 +1,10 @@
 \documentclass{article}
-
+\usepackage{geometry}[0.5in]
 \usepackage{amsthm}
 \newtheorem{rexample}{R Example}[section]
+\newtheorem{GIT}{GIT Example}[section]
 
-\title{Using the Example Environment with knitr}
+\title{Using the Example Environment with \textbf{knitr}}
 \author{Alan's Modifications and Notes}
 \begin{document}
 \maketitle
@@ -12,6 +13,10 @@
 knit_hooks$set(rexample = function(before, options, envir) {
   if (before) sprintf('\\begin{rexample}\\label{%s}\\hfill{}', options$label) else '\\end{rexample}'
 })
+knit_hooks$set(GIT = function(before, options, envir) {
+  if (before) sprintf('\\begin{GIT}\\label{%s}\\hfill{}', options$label) else '\\end{GIT}'
+})
+
 @
 
 \section{Introduction}
@@ -62,6 +67,10 @@ ggplot(data = mtcars) + geom_density(aes(x = mpg), fill = "pink")
 
 <<GraphShow, echo = FALSE, fig.align = 'center', fig.width = 3, fig.height = 3, dev = 'tikz'>>=
 <<Graph>>
+@
+
+<<GIT, engine = "bash", GIT = TRUE, comment = NA>>=
+git status
 @
 
 \end{document}
