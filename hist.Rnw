@@ -3,7 +3,7 @@
 \begin{document}
 What did you expect? This is the real deal!
 
-<<>>=
+<<echo = FALSE>>=
 hist(rnorm(10000), col = rainbow(40))
 @
 
